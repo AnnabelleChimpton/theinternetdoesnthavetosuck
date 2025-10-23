@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Internet Doesn’t Have to Suck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A tiny human-made page about why the internet doesn’t have to suck — and a link to HomePageAgain.com." />
+  <meta name="theme-color" content="#00A86B" />
+
+  <!-- Speed up the jump to HomePageAgain without tracking -->
+  <link rel="dns-prefetch" href="https://homepageagain.com">
+  <link rel="preconnect" href="https://homepageagain.com" crossorigin>
+  <link rel="prefetch" href="https://homepageagain.com/">
+
+  <!-- Simple social cards (optional but nice when this URL gets shared) -->
+  <meta property="og:title" content="The Internet Doesn’t Have to Suck" />
+  <meta property="og:description" content="A tiny human-made page about why the internet doesn’t have to suck — and a link to HomePageAgain.com." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://theinternetdoesnthavetosuck.com/" />
+  <meta name="twitter:card" content="summary" />
+
+  <style>
+    /* ---------- Base Retro Styles ---------- */
+    body {
+      margin: 0;
+      font-family: "Verdana","Geneva","Tahoma",sans-serif;
+      color: #111;
+      background: radial-gradient(#ffffff 40%, #f7f3ea 41%) 0 0/12px 12px repeat;
+      image-rendering: pixelated;
+    }
+    .wall {
+      min-height: 100dvh;
+      padding: 16px;
+      box-sizing: border-box;
+      background:
+        repeating-linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.06) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.04), rgba(0,0,0,.04) 1px, transparent 1px, transparent 16px);
+    }
+    .crt {
+      max-width: 820px;
+      margin: 16px auto;
+      border: 4px solid #000;
+      background: #fffefb;
+      box-shadow: 8px 8px 0 #000; /* gives the chunky retro lift */
+    }
+    .crt-top {
+      background: linear-gradient(180deg,#00c78b,#00a86b);
+      border-bottom: 4px solid #000;
+    }
+    marquee {
+      font-family: "Trebuchet MS","Verdana",sans-serif;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #001a12;
+      background: repeating-linear-gradient(90deg,#9ff2cf,#9ff2cf 10px,#7ee6c0 10px,#7ee6c0 20px);
+      padding: 10px 0;
+      border-bottom: 4px solid #000;
+    }
+    .crt-body { padding: 20px 24px; }
+    .center { text-align: center; }
+    .mono { font-family: "Courier New", monospace; }
+    .blink { animation: blink 1s steps(1,end) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    hr {
+      border: none; height: 4px; margin: 18px 0;
+      background: linear-gradient(90deg,#000 0 50%,transparent 50% 100%);
+      background-size: 12px 4px;
+    }
+    .button88 {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 200px; height: 36px;
+      background: #cde8ff; border: 2px solid #000; box-shadow: 3px 3px 0 #000;
+      font: 700 12px/1 "Verdana",sans-serif; text-decoration: none; color: #001a33; text-transform: uppercase;
+      cursor: pointer;
+    }
+    .button88:active { transform: translate(1px,1px); box-shadow: 2px 2px 0 #000; }
+    .badge {
+      display: inline-block; margin: 4px 6px 0 0; padding: 4px 6px;
+      border: 2px solid #000; box-shadow: 2px 2px 0 #000; background: #fff; font-size: 11px;
+    }
+    .bar {
+      height: 12px; margin: 8px 0 14px;
+      background: repeating-linear-gradient(135deg,#f8d800 0 12px,#111 12px 24px);
+      border: 2px solid #000; box-shadow: inset 0 0 0 2px #f8d800;
+    }
+    a { color: #0037b3; } a:visited { color: #5a2ea6; }
+
+    /* Footer */
+    .crt-footer { padding: 14px 18px; background:#fffbef; border-top:4px solid #000; font-size:12px; }
+
+    /* ---------- Portal Overlay (retro jack-in) ---------- */
+    .portal {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s linear;
+      z-index: 9999;
+      --x: 50vw;           /* click X */
+      --y: 50vh;           /* click Y */
+      --dur: .85s;         /* animation length */
+    }
+    .portal__mask,
+    .portal__scan,
+    .portal__vignette,
+    .portal__banner {
+      position: absolute; inset: 0;
+    }
+    /* Expanding circle from click point */
+    .portal__mask {
+      background:
+        radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,1) 0 20%, rgba(255,255,255,.9) 20% 60%, rgba(255,255,255,0) 61%) no-repeat;
+      clip-path: circle(0 at var(--x) var(--y));
+    }
+    /* scanlines */
+    .portal__scan {
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 2px, transparent 2px 4px);
+      mix-blend-mode: multiply;
+      animation: flicker .12s linear infinite;
+      opacity: .45;
+    }
+    /* vignette */
+    .portal__vignette {
+      background:
+        radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 80%);
+      pointer-events: none;
+    }
+    /* “CONNECTING…” banner */
+    .portal__banner {
+      display: grid;
+      place-items: center;
+      font: 700 12px/1 "Courier New", monospace;
+      color: #001a12;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .portal__label {
+      padding: 8px 10px;
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      background: repeating-linear-gradient(90deg,#9ff2cf,#9ff2cf 10px,#7ee6c0 10px,#7ee6c0 20px);
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: .45; }
+      50% { opacity: .35; }
+    }
+    @keyframes openPortal {
+      from { clip-path: circle(0 at var(--x) var(--y)); }
+      to   { clip-path: circle(150vmax at var(--x) var(--y)); }
+    }
+    /* Active state */
+    .portal.is-active { opacity: 1; }
+    .portal.is-active .portal__mask {
+      animation: openPortal var(--dur) cubic-bezier(.2,.9,.2,1) forwards;
+    }
+
+    /* Reduce motion: skip the flourish */
+    @media (prefers-reduced-motion: reduce) {
+      .portal { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- hi, future me. if you’re reading this in view-source: thanks for caring about the web. -->
+  <div class="wall">
+    <div class="crt">
+      <div class="crt-top">
+        <marquee scrollamount="6" aria-label="The Internet Doesn’t Have to Suck — Human-made. No engagement traps. Just vibes.">
+          The Internet Doesn’t Have to Suck • Human-made. No engagement traps. Just vibes.
+        </marquee>
+      </div>
+
+      <div class="crt-body">
+        <center>
+          <h1 class="mono" style="font-size:28px; margin: 8px 0 4px;">
+            theinternetdoesnthavetosuck<span class="blink">.com</span>
+          </h1>
+          <div class="bar" title="Under Construction"></div>
+          <p style="margin: 10px 0 0; font-size:13px;"><i>Est. 2025 — Best viewed on your family’s beige PC.</i></p>
+        </center>
+
+        <hr />
+
+        <!-- Tone-forward copy (light copyedits for flow/typos) -->
+        <div style="font-size:16px; line-height:1.6;">
+          <p>I am a <b>millennial</b> who grew up on the internet. During the days when parents cautiously warned me not to trust anybody on the other side of the screen, I spent countless hours challenging that mindset of twenty-first-century connection. Through forums, fan sites, and gaming guilds, I found a world that was wildly creative and accepted me for the weirdo that I am. A world that encouraged creation, identity, individuality, and stood accessible to anyone who dared power on their computer.</p>
+
+          <p><b>But they (big corps) took that from us.</b></p>
+
+          <p>I’m tired of pretending that <b>ads, algorithms, data mining, and AI content slop</b> are just “the way things are.” I believe we can do better.</p>
+
+          <p>It doesn’t have to be that way. We can connect in ways that are fun, unique, and personal. You can own your space again. You can build a little corner that looks like <i>you</i>, not like a growth deck.</p>
+        </div>
+
+        <hr />
+
+        <!-- Call-to-action (portal-enabled) -->
+        <div class="center" style="margin: 8px 0 14px;">
+          <p class="mono" style="margin: 0 0 8px;">If that’s your kind of internet, start here:</p>
+
+          <!-- Portal trigger -->
+          <a id="portalLink" class="button88" href="https://homepageagain.com" data-destination="https://homepageagain.com" title="HomePageAgain" rel="noopener">HomePageAgain.com →</a>
+
+          <div style="font-size:12px; margin-top:8px;">
+            Pixel homes. Guestbooks. Real customization. Chronological feeds. ThreadRings.
+          </div>
+        </div>
+
+        <hr />
+      </div>
+
+      <div class="crt-footer center">
+        <span class="badge">Under Construction 🚧</span>
+        <span class="badge">Powered by Humans</span>
+        <span class="badge">Best Viewed in 800×600</span>
+        <span class="badge">No Cookies Needed</span>
+        <div class="mono" style="margin-top:10px;">
+          Visitor Counter: <span id="counter">000001</span> • © <span id="year"></span> theinternetdoesnthavetosuck.com
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portal overlay elements -->
+  <div class="portal" id="portalOverlay" aria-hidden="true">
+    <div class="portal__mask"></div>
+    <div class="portal__scan"></div>
+    <div class="portal__vignette"></div>
+    <div class="portal__banner" aria-live="polite">
+      <div class="portal__label mono">CONNECTING TO HOMEPAGEAGAIN…</div>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="center mono" style="padding:8px;">
+      JavaScript is off — <a href="https://homepageagain.com" rel="noopener">click here</a> to visit HomePageAgain.
+    </div>
+  </noscript>
+
+  <script>
+    // Fake local visitor counter + year
+    (function () {
+      try {
+        const key = "tidhats_counter";
+        const n = (parseInt(localStorage.getItem(key) || "0", 10) + 1);
+        localStorage.setItem(key, String(n));
+        document.getElementById("counter").textContent = ("" + n).padStart(6, "0");
+      } catch (e) {}
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+
+    // Portal transition logic
+    (function () {
+      const link = document.getElementById('portalLink');
+      const overlay = document.getElementById('portalOverlay');
+
+      function prefersReducedMotion() {
+        return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      function activatePortal(x, y, url) {
+        // Position the portal origin at click point
+        overlay.style.setProperty('--x', x + 'px');
+        overlay.style.setProperty('--y', y + 'px');
+
+        overlay.classList.add('is-active');
+
+        // After animation, navigate
+        const duration = 850; // keep in sync with --dur
+        setTimeout(function () {
+          window.location.href = url;
+        }, prefersReducedMotion() ? 0 : duration);
+      }
+
+      link.addEventListener('click', function (e) {
+        // If user holds Cmd/Ctrl or middle-clicks, allow default new-tab behavior
+        if (e.metaKey || e.ctrlKey || e.button === 1) return;
+
+        e.preventDefault();
+        const url = link.getAttribute('data-destination') || link.href;
+
+        if (prefersReducedMotion()) {
+          window.location.href = url;
+          return;
+        }
+
+        const rect = link.getBoundingClientRect();
+        // Use click position if available, else center of the link
+        const x = (e.clientX || (rect.left + rect.width / 2));
+        const y = (e.clientY || (rect.top + rect.height / 2));
+
+        activatePortal(x, y, url);
+      });
+    })();
+  </script>
+
+  <!--
+    easter egg for source-viewers:
+    You found the note. The web is still ours to write. Build a page, link a page, read a page. Repeat.
+  -->
+</body>
+</html>
