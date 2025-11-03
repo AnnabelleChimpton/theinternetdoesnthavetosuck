@@ -2,49 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>The Internet Doesn’t Have to Suck</title>
+  <title>The Internet Doesn't Have to Suck</title>
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A tiny human-made page about why the internet doesn’t have to suck — and a link to HomePageAgain.com." />
-  <meta name="theme-color" content="#00A86B" />
+  <meta name="description" content="A small human-made signal on a loud web. If you found this, you're early." />
+  <meta name="theme-color" content="#0A6E4E" />
 
-  <!-- Speed up the jump to HomePageAgain without tracking -->
+  <!-- Fast handoff to HomePageAgain without tracking -->
   <link rel="dns-prefetch" href="https://homepageagain.com">
   <link rel="preconnect" href="https://homepageagain.com" crossorigin>
   <link rel="prefetch" href="https://homepageagain.com/">
 
-  <!-- Simple social cards (optional but nice when this URL gets shared) -->
-  <meta property="og:title" content="The Internet Doesn’t Have to Suck" />
-  <meta property="og:description" content="A tiny human-made page about why the internet doesn’t have to suck — and a link to HomePageAgain.com." />
+  <!-- Social cards kept minimal to preserve mystique -->
+  <meta property="og:title" content="The Internet Doesn't Have to Suck" />
+  <meta property="og:description" content="A small human-made signal on a loud web. If you found this, you're early." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://theinternetdoesnthavetosuck.com/" />
   <meta name="twitter:card" content="summary" />
 
   <style>
-    /* ---------- Base Retro Styles ---------- */
+    /* ---------- Base Zine/Retro Aesthetic ---------- */
+    :root {
+      --ink: #111;
+      --paper: #fffef7;
+      --grid: rgba(0,0,0,.06);
+      --accent-a: #9ff2cf;
+      --accent-b: #7ee6c0;
+      --header-start: #00c78b;
+      --header-end: #00a86b;
+      --link: #0037b3;
+      --link-visited: #5a2ea6;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       margin: 0;
+      color: var(--ink);
       font-family: "Verdana","Geneva","Tahoma",sans-serif;
-      color: #111;
-      background: radial-gradient(#ffffff 40%, #f7f3ea 41%) 0 0/12px 12px repeat;
+      background:
+        radial-gradient(#ffffff 40%, #f7f3ea 41%) 0 0/12px 12px repeat;
       image-rendering: pixelated;
+      text-rendering: optimizeLegibility;
     }
+    a { color: var(--link); }
+    a:visited { color: var(--link-visited); }
+
     .wall {
       min-height: 100dvh;
       padding: 16px;
-      box-sizing: border-box;
       background:
-        repeating-linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.06) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(90deg, var(--grid), var(--grid) 1px, transparent 1px, transparent 16px),
         repeating-linear-gradient(0deg, rgba(0,0,0,.04), rgba(0,0,0,.04) 1px, transparent 1px, transparent 16px);
     }
     .crt {
       max-width: 820px;
       margin: 16px auto;
       border: 4px solid #000;
-      background: #fffefb;
+      background: var(--paper);
+      box-shadow: 6px 6px 0 #000;
     }
     .crt-top {
-      background: linear-gradient(180deg,#00c78b,#00a86b);
+      background: linear-gradient(180deg, var(--header-start), var(--header-end));
       border-bottom: 4px solid #000;
     }
     marquee {
@@ -53,170 +71,127 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #001a12;
-      background: repeating-linear-gradient(90deg,#9ff2cf,#9ff2cf 10px,#7ee6c0 10px,#7ee6c0 20px);
+      background: repeating-linear-gradient(90deg, var(--accent-a), var(--accent-a) 10px, var(--accent-b) 10px, var(--accent-b) 20px);
       padding: 10px 0;
       border-bottom: 4px solid #000;
     }
-    .crt-body { padding: 20px 24px; }
+    .crt-body { padding: 22px 24px; }
     .center { text-align: center; }
     .mono { font-family: "Courier New", monospace; }
     .blink { animation: blink 1s steps(1,end) infinite; }
     @keyframes blink { 50% { opacity: 0; } }
     hr {
       border: none; height: 4px; margin: 18px 0;
-      background: linear-gradient(90deg,#000 0 50%,transparent 50% 100%);
+      background: linear-gradient(90deg, #000 0 50%, transparent 50% 100%);
       background-size: 12px 4px;
     }
-    .button88 {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 200px; height: 36px;
-      background: #cde8ff; border: 2px solid #000;
-      font: 700 12px/1 "Verdana",sans-serif; text-decoration: none; color: #001a33; text-transform: uppercase;
-      cursor: pointer;
-    }
-    .button88:active { transform: translate(1px,1px); }
+
+    /* Poster headline + badges */
     .badge {
       display: inline-block; margin: 4px 6px 0 0; padding: 4px 6px;
       border: 2px solid #000; box-shadow: 2px 2px 0 #000; background: #fff; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .02em;
     }
     .bar {
       height: 12px; margin: 8px 0 14px;
-      background: repeating-linear-gradient(135deg,#f8d800 0 12px,#111 12px 24px);
+      background: repeating-linear-gradient(135deg, #f8d800 0 12px, #111 12px 24px);
       border: 2px solid #000; box-shadow: inset 0 0 0 2px #f8d800;
     }
-    a { color: #0037b3; } a:visited { color: #5a2ea6; }
 
-    /* Footer */
+    /* Button feels like a printed ticket */
+    .button88 {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 220px; height: 38px;
+      background: #cde8ff; border: 2px solid #000;
+      font: 700 12px/1 "Verdana",sans-serif; text-decoration: none; color: #001a33; text-transform: uppercase;
+      letter-spacing: 0.04em;
+      box-shadow: 3px 3px 0 #000;
+      cursor: pointer;
+    }
+    .button88:active { transform: translate(1px,1px); box-shadow: 2px 2px 0 #000; }
+
     .crt-footer { padding: 14px 18px; background:#fffbef; border-top:4px solid #000; font-size:12px; }
 
-    /* ---------- Portal Overlay (retro jack-in) ---------- */
+    /* ---------- Portal Overlay (retro dial-in) ---------- */
     .portal {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity .15s linear;
-      z-index: 9999;
-      --x: 50vw;           /* click X */
-      --y: 50vh;           /* click Y */
-      --dur: .85s;         /* animation length */
+      position: fixed; inset: 0; pointer-events: none;
+      opacity: 0; transition: opacity .15s linear; z-index: 9999;
+      --x: 50vw; --y: 50vh; --dur: .85s;
     }
-    .portal__mask,
-    .portal__scan,
-    .portal__vignette,
-    .portal__banner {
-      position: absolute; inset: 0;
-    }
-    /* Expanding circle from click point */
+    .portal__mask, .portal__scan, .portal__vignette, .portal__banner { position: absolute; inset: 0; }
     .portal__mask {
-      background:
-        radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,1) 0 20%, rgba(255,255,255,.9) 20% 60%, rgba(255,255,255,0) 61%) no-repeat;
+      background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,1) 0 20%, rgba(255,255,255,.9) 20% 60%, rgba(255,255,255,0) 61%) no-repeat;
       clip-path: circle(0 at var(--x) var(--y));
     }
-    /* scanlines */
     .portal__scan {
-      background:
-        repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 2px, transparent 2px 4px);
-      mix-blend-mode: multiply;
-      animation: flicker .12s linear infinite;
-      opacity: .45;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 2px, transparent 2px 4px);
+      mix-blend-mode: multiply; animation: flicker .12s linear infinite; opacity: .45;
     }
-    /* vignette */
-    .portal__vignette {
-      background:
-        radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 80%);
-      pointer-events: none;
-    }
-    /* “CONNECTING…” banner */
+    .portal__vignette { background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 80%); }
     .portal__banner {
-      display: grid;
-      place-items: center;
-      font: 700 12px/1 "Courier New", monospace;
-      color: #001a12;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+      display: grid; place-items: center;
+      font: 700 12px/1 "Courier New", monospace; color: #001a12;
+      text-transform: uppercase; letter-spacing: .1em;
     }
     .portal__label {
-      padding: 8px 10px;
-      border: 2px solid #000;
-      box-shadow: 3px 3px 0 #000;
-      background: repeating-linear-gradient(90deg,#9ff2cf,#9ff2cf 10px,#7ee6c0 10px,#7ee6c0 20px);
+      padding: 8px 10px; border: 2px solid #000; box-shadow: 3px 3px 0 #000;
+      background: repeating-linear-gradient(90deg, var(--accent-a), var(--accent-a) 10px, var(--accent-b) 10px, var(--accent-b) 20px);
     }
-
-    @keyframes flicker {
-      0%, 100% { opacity: .45; }
-      50% { opacity: .35; }
-    }
-    @keyframes openPortal {
-      from { clip-path: circle(0 at var(--x) var(--y)); }
-      to   { clip-path: circle(150vmax at var(--x) var(--y)); }
-    }
-    /* Active state */
+    @keyframes flicker { 0%,100% { opacity:.45 } 50% { opacity:.35 } }
+    @keyframes openPortal { from { clip-path: circle(0 at var(--x) var(--y)); } to { clip-path: circle(150vmax at var(--x) var(--y)); } }
     .portal.is-active { opacity: 1; }
-    .portal.is-active .portal__mask {
-      animation: openPortal var(--dur) cubic-bezier(.2,.9,.2,1) forwards;
-    }
+    .portal.is-active .portal__mask { animation: openPortal var(--dur) cubic-bezier(.2,.9,.2,1) forwards; }
 
-    /* Reduce motion: skip the flourish */
-    @media (prefers-reduced-motion: reduce) {
-      .portal { display: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { .portal { display: none; } }
   </style>
 </head>
 <body>
-  <!-- hi, future me. if you’re reading this in view-source: thanks for caring about the web. -->
+  <!-- hi friend. if you're reading view-source: thanks for caring about the web. -->
   <div class="wall">
     <div class="crt">
       <div class="crt-top">
-        <marquee scrollamount="6" aria-label="The Internet Doesn’t Have to Suck — Human-made. No engagement traps. Just vibes.">
-          The Internet Doesn’t Have to Suck. We can all make decisions that make it fun again. Fun for humans.
+        <marquee scrollamount="6" aria-label="The Internet Doesn't Have to Suck — Human-made. No engagement traps.">
+          The Internet Doesn't Have to Suck. Human-made. No engagement traps.
         </marquee>
       </div>
 
       <div class="crt-body">
         <center>
-          <h1 class="mono" style="font-size:28px; margin: 8px 0 4px;">
+          <h1 class="mono" style="font-size:28px; margin: 10px 0 4px;">
             theinternetdoesnthavetosuck<span class="blink">.com</span>
           </h1>
           <div class="bar" title="Under Construction"></div>
-          <p style="margin: 10px 0 0; font-size:13px;"><i>Est. 2025 — Best viewed on your family’s beige PC.</i></p>
+          <p style="margin: 10px 0 0; font-size:13px;"><i>Est. 2025 — best viewed on your family's beige PC.</i></p>
+          <div class="badge">Handmade HTML</div>
+          <div class="badge">No Cookies</div>
+          <div class="badge">Independent</div>
         </center>
 
         <hr />
 
-        <!-- Tone-forward copy (light copyedits for flow/typos) -->
-        <div style="font-size:16px; line-height:1.6;">
-          <p>I am a <b>millennial</b> who grew up on the internet. During the days when parents cautiously warned me not to trust anybody on the other side of the screen, I spent countless hours challenging that mindset of twenty-first-century connection. Through forums, fan sites, and gaming guilds, I found a world that was wildly creative and accepted me for the weirdo that I am. A world that encouraged creation, identity, individuality, and stood accessible to anyone who dared power on their computer.</p>
-
-          <p><b>But they (big corps) took that from us.</b></p>
-
-          <p>I’m tired of pretending that <b>ads, algorithms, data mining, and AI content slop</b> are just “the way things are.” I believe we can do better.</p>
-
-          <p>It doesn’t have to be that way. We can connect in ways that are fun, unique, and personal. You can own your space again. You can build a little corner that looks like <i>you</i>, not like a growth deck.</p>
+        <!-- Short manifesto: intrigue over explanation -->
+        <div style="font-size:16px; line-height:1.7; max-width:68ch; margin: 0 auto;">
+          <p>I grew up on the web when pages felt like bedrooms and neighborhoods, not feeds. You could make a place that looked like you. People visited and signed your guestbook. It was weird and it was ours.</p>
+          <p>Somewhere along the way, the web got loud and same. Ads, metrics, recommendation traps. You know the feeling.</p>
+          <p><b>It doesn't have to be that way.</b> There is a place where people are rebuilding the small, personal web. It is already alive. If you found this, you're early.</p>
         </div>
 
         <hr />
 
-        <!-- Call-to-action (portal-enabled) -->
-        <div class="center" style="margin: 8px 0 14px;">
-          <p class="mono" style="margin: 0 0 8px;">If that’s your kind of internet, start here:</p>
-
-          <!-- Portal trigger -->
-          <a id="portalLink" class="button88" href="https://homepageagain.com" data-destination="https://homepageagain.com" title="HomePageAgain" rel="noopener">HomePageAgain.com →</a>
-
-          <div style="font-size:12px; margin-top:8px;">
-            Pixel homes. Guestbooks. Real customization. Chronological feeds. ThreadRings.
-          </div>
+        <!-- Call-to-action: portal to the homebase -->
+        <div class="center" style="margin: 10px 0 16px;">
+          <p class="mono" style="margin: 0 0 10px;">There is a door. Walk through it.</p>
+          <a id="portalLink" class="button88" href="https://homepageagain.com" data-destination="https://homepageagain.com" title="Enter the homebase" rel="noopener">Enter the homebase →</a>
+          <div style="font-size:12px; margin-top:10px;">You will know it when you see it.</div>
         </div>
 
         <hr />
       </div>
 
       <div class="crt-footer center">
-        <span class="badge">Under Construction 🚧</span>
+        <span class="badge">Under Construction</span>
         <span class="badge">Powered by Humans</span>
-        <span class="badge">Best Viewed in 800×600</span>
-        <span class="badge">No Cookies Needed</span>
+        <span class="badge">800×600 Friendly</span>
         <div class="mono" style="margin-top:10px;">
           Visitor Counter: <span id="counter">000001</span> • © <span id="year"></span> theinternetdoesnthavetosuck.com
         </div>
@@ -224,24 +199,24 @@
     </div>
   </div>
 
-  <!-- Portal overlay elements -->
+  <!-- Portal overlay -->
   <div class="portal" id="portalOverlay" aria-hidden="true">
     <div class="portal__mask"></div>
     <div class="portal__scan"></div>
     <div class="portal__vignette"></div>
     <div class="portal__banner" aria-live="polite">
-      <div class="portal__label mono">CONNECTING TO HOMEPAGEAGAIN…</div>
+      <div class="portal__label mono">Connecting. You found it.</div>
     </div>
   </div>
 
   <noscript>
     <div class="center mono" style="padding:8px;">
-      JavaScript is off — <a href="https://homepageagain.com" rel="noopener">click here</a> to visit HomePageAgain.
+      JavaScript is off — <a href="https://homepageagain.com" rel="noopener">enter here</a>.
     </div>
   </noscript>
 
   <script>
-    // Fake local visitor counter + year
+    // Local visitor counter + year (no network calls)
     (function () {
       try {
         const key = "tidhats_counter";
@@ -252,7 +227,7 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     })();
 
-    // Portal transition logic
+    // Portal transition
     (function () {
       const link = document.getElementById('portalLink');
       const overlay = document.getElementById('portalOverlay');
@@ -260,46 +235,29 @@
       function prefersReducedMotion() {
         return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       }
-
       function activatePortal(x, y, url) {
-        // Position the portal origin at click point
         overlay.style.setProperty('--x', x + 'px');
         overlay.style.setProperty('--y', y + 'px');
-
         overlay.classList.add('is-active');
-
-        // After animation, navigate
-        const duration = 850; // keep in sync with --dur
-        setTimeout(function () {
-          window.location.href = url;
-        }, prefersReducedMotion() ? 0 : duration);
+        const duration = 850;
+        setTimeout(function () { window.location.href = url; }, prefersReducedMotion() ? 0 : duration);
       }
-
       link.addEventListener('click', function (e) {
-        // If user holds Cmd/Ctrl or middle-clicks, allow default new-tab behavior
-        if (e.metaKey || e.ctrlKey || e.button === 1) return;
-
+        if (e.metaKey || e.ctrlKey || e.button === 1) return; // allow new tab
         e.preventDefault();
         const url = link.getAttribute('data-destination') || link.href;
-
-        if (prefersReducedMotion()) {
-          window.location.href = url;
-          return;
-        }
-
+        if (prefersReducedMotion()) { window.location.href = url; return; }
         const rect = link.getBoundingClientRect();
-        // Use click position if available, else center of the link
         const x = (e.clientX || (rect.left + rect.width / 2));
         const y = (e.clientY || (rect.top + rect.height / 2));
-
         activatePortal(x, y, url);
       });
     })();
   </script>
 
   <!--
-    easter egg for source-viewers:
-    You found the note. The web is still ours to write. Build a page, link a page, read a page. Repeat.
+    easter egg:
+    The web is still ours. Build a page, link a page, read a page. Repeat.
   -->
 </body>
 </html>
